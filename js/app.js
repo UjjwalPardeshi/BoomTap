@@ -57,7 +57,6 @@
     });
     if (p && p.bpm) setBpm(p.bpm);
   }
-  loadPreset("boots");
 
   /* ============ audio engine ============ */
 
@@ -359,6 +358,7 @@
     });
   });
 
+  loadPreset("boots");
   buildGrid();
 
   /* ============ page interactions ============ */
