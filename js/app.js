@@ -239,6 +239,18 @@
       }
       gridEl.appendChild(rowEl);
     });
+    gridEl.addEventListener("keydown", function (e) {
+      var cell = e.target.closest(".seq-cell");
+      if (!cell) return;
+      var moves = { ArrowLeft: [0, -1], ArrowRight: [0, 1], ArrowUp: [-1, 0], ArrowDown: [1, 0] };
+      var move = moves[e.key];
+      if (!move) return;
+      e.preventDefault();
+      var rowIdx = ROWS.findIndex(function (r) { return r.id === cell.dataset.row; });
+      var nextRow = (rowIdx + move[0] + ROWS.length) % ROWS.length;
+      var nextStep = (+cell.dataset.step + move[1] + STEPS) % STEPS;
+      cellsByRow[ROWS[nextRow].id][nextStep].focus();
+    });
     gridEl.addEventListener("click", function (e) {
       var cell = e.target.closest(".seq-cell");
       if (!cell) return;
@@ -374,6 +386,13 @@
     if (e.target.tagName === "A") {
       siteNav.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && siteNav.classList.contains("open")) {
+      siteNav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.focus();
     }
   });
 
