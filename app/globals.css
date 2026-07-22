@@ -12,9 +12,9 @@
   --red-deep: #c93a27;
   --tape: #ffd23f;
   --ok: #8fd48a;
-  --font-display: "Anton", "Arial Narrow", "Impact", sans-serif;
-  --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --font-display: var(--font-anton), "Arial Narrow", "Impact", sans-serif;
+  --font-body: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), "SFMono-Regular", Consolas, monospace;
   --pad: clamp(1.25rem, 4vw, 4rem);
   --maxw: 74rem;
 }
