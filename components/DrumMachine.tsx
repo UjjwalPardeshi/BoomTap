@@ -76,6 +76,7 @@ export default function DrumMachine() {
 
   useEffect(() => {
     return () => {
+      playingRef.current = false;
       if (timerRef.current !== null) window.clearInterval(timerRef.current);
       engineRef.current?.close();
       engineRef.current = null;
